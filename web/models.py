@@ -25,11 +25,12 @@ class Mahasiswa(models.Model):
 
 class Berita(models.Model):
     judul = models.CharField(max_length=200)
-    isi = models.TextField()
-    tanggal = models.DateTimeField(auto_now_add=True)
+    konten = models.TextField()
+    gambar = models.ImageField(upload_to='berita_images/', blank=True, null=True)
+    tanggal_dibuat = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.judul
-
+        
     class Meta:
         verbose_name_plural = "Berita"

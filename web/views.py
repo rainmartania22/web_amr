@@ -3,13 +3,15 @@ from ajax_datatable.views import AjaxDatatableView
 from .models import Mahasiswa, Berita, Jurusan
 
 def beranda(request):
-    data_mahasiswa = Mahasiswa.objects.all()
-    data_berita = Berita.objects.all().order_by('-tanggal')
+    # Mengambil semua data berita, diurutkan dari yang terbaru
+    berita_list = Berita.objects.all().order_by('-tanggal_dibuat')
     
+    # Memasukkan data ke dalam dictionary 'context'
     context = {
-        'mahasiswa': data_mahasiswa,
-        'berita': data_berita,
+        'berita_list': berita_list
     }
+    
+    # Mengirim context ke template
     return render(request, 'index.html', context)
 
 class MahasiswaAjaxDatatableView(AjaxDatatableView):
