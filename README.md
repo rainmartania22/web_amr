@@ -11,11 +11,10 @@ Pastikan Python sudah terinstal. Buka terminal/CMD di dalam folder project ini, 
    pip install -r requirements.txt
    
 2. Jalankan server lokal Django: ```bash
-    python manage.py runserver
+   python manage.py runserver
 
+3. Buka browser dan akses: http://127.0.0.1:8000/
 
-3.Buka browser dan akses: http://127.0.0.1:8000/
-
-4.🔑 Akses Admin Panel:
-URL: http://127.0.0.1:8000/admin/
+4. 🔑 Akses Admin Panel:
+   URL: http://127.0.0.1:8000/admin/
 
