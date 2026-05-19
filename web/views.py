@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ajax_datatable.views import AjaxDatatableView
+from django.http import JsonResponse
 from .models import Mahasiswa, Berita, Jurusan
 
 def beranda(request):
@@ -14,18 +14,19 @@ def beranda(request):
     # Mengirim context ke template
     return render(request, 'index.html', context)
 
-class MahasiswaAjaxDatatableView(AjaxDatatableView):
-    model = Mahasiswa
-    title = 'Daftar Mahasiswa'
-    initial_order = [["no", "asc"], ] 
-    length_menu = [[10, 20, 50, 100], [10, 20, 50, 100]]
-
-    column_defs = [
-        # 'name' harus sesuai dengan variabel di models.py kamu
-        {'name': 'no', 'title': 'NO', 'visible': True}, 
-        {'name': 'nim', 'title': 'NIM', 'visible': True},
-        {'name': 'nama', 'title': 'NAMA', 'visible': True},
-        {'name': 'email', 'title': 'EMAIL', 'visible': True},
-        # Menggunakan 'id_jur' karena itu nama ForeignKey di model Mahasiswa kamu
-        {'name': 'id_jur', 'foreign_field': 'id_jur__nama', 'title': 'JURUSAN'}
-    ]
+def mahasiswa_json(request):
+    # Mengambil semua data mahasiswa dari database
+    mahasiswa_list = Mahasiswa.objects.all()
+    
+    data = []
+    for index, mhs in enumerate(mahasiswa_list, start=1):
+        data.append({
+            'no': index,
+            'nim': mhs.nim,
+            'nama': mhs.nama,
+            'email': mhs.email,
+            'id_jur': mhs.id_jur.nama if mhs.id_jur else '-'  # Menampilkan nama jurusan
+        })
+        
+    # Mengembalikan data dalam format JSON yang dimengerti DataTables
+    return JsonResponse({'data': data})
