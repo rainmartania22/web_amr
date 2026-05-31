@@ -823,3 +823,25 @@ http://www.tooplate.com/view/2106-soft-landing
       height: 65vh;
     }
   }
+ 
+@media (min-width: 768px) {
+  
+    .custom-navbar .nav li a {
+        font-size: 14px !important;     
+        padding-right: 20px !important;  
+        padding-left: 20px !important;   
+        letter-spacing: -0.12px;         
+    }
+    
+    .custom-navbar .container {
+        width: 95% !important;          
+        max-width: 100% !important;
+    }
+
+    .custom-navbar .navbar-right {
+        margin-right: -10px !important;
+    }
+    .custom-navbar .navbar-brand {
+        margin-left: -10px !important;
+    }
+}

@@ -1,8 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect  
 from django.http import JsonResponse
-from .models import Mahasiswa, Berita, Jurusan
+from django.contrib import messages  
+from .models import Mahasiswa, Berita, Jurusan, KontakPesan  
 
 def beranda(request):
+    if request.method == "POST":
+        nama = request.POST.get('name')
+        email = request.POST.get('email')
+        pesan = request.POST.get('message')
+        
+        if nama and email and pesan:
+            KontakPesan.objects.create(nama=nama, email=email, pesan=pesan)
+            
+            messages.success(request, "Pesan antum berhasil dikirim ke admin!")
+            return redirect('beranda') 
+
     berita_list = Berita.objects.all().order_by('-tanggal_dibuat')
     
     context = {

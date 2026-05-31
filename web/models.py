@@ -27,10 +27,22 @@ class Berita(models.Model):
     judul = models.CharField(max_length=200)
     konten = models.TextField()
     gambar = models.ImageField(upload_to='berita_images/', blank=True, null=True)
-    tanggal_dibuat = models.DateTimeField(auto_now_add=True)
+    tanggal_dibuat = models.DateTimeField(default=timezone.now, verbose_name="Tanggal Rilis Berita")
 
     def __str__(self):
         return self.judul
         
     class Meta:
         verbose_name_plural = "Berita"
+
+class KontakPesan(models.Model):
+    nama = models.CharField(max_length=100)
+    email = models.EmailField()
+    pesan = models.TextField()
+    tanggal_kirim = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Pesan dari {self.nama} ({self.email})"
+
+    class Meta:
+        verbose_name_plural = "Daftar Pesan Masuk"
