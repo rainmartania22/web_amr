@@ -7,14 +7,12 @@ Proyek ini adalah aplikasi web berbasis **Django** yang mengintegrasikan sistem 
 
 Pastikan Python sudah terinstal. Buka terminal/CMD di dalam folder project ini, lalu jalankan perintah berikut secara berurutan:
 
-1. **Install semua library yang dibutuhkan:** ```bash
-   pip install -r requirements.txt
    
-2. Jalankan server lokal Django: ```bash
+1. Jalankan server lokal Django: ```bash
    python manage.py runserver
 
-3. Buka browser dan akses: http://127.0.0.1:8000/
+2. Buka browser dan akses: http://127.0.0.1:8000/
 
-4. 🔑 Akses Admin Panel:
+3. 🔑 Akses Admin Panel:
    URL: http://127.0.0.1:8000/admin/
 
