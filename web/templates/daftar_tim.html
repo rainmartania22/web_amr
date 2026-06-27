@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Registrasi Tim | Rivalitas E-Sports</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+     <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
+     
+     <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+
+     <style>
+        /* Background utama halaman menjadi gelap */
+        body { 
+            background-color: #0d0f12; 
+            color: #ffffff;
+        }
+
+        /* Kotak Form Ala E-Sports */
+        .form-container {
+            background-color: #16181d; /* Warna card gelap */
+            padding: 45px 40px; 
+            border-radius: 16px; 
+            /* Efek glow neon hijau tipis */
+            box-shadow: 0 10px 40px rgba(41, 202, 142, 0.12);
+            border: 1px solid rgba(41, 202, 142, 0.2); 
+            margin-top: 120px; 
+            margin-bottom: 60px;
+        }
+
+        /* Warna label teks */
+        .form-container label {
+            color: #a0a5b1;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Kotak input dibikin gelap elegan */
+        .form-control { 
+            background-color: #1e2229;
+            border: 1px solid #2d333b;
+            color: #ffffff;
+            border-radius: 8px; 
+            padding: 12px 15px; 
+            height: auto; 
+            transition: all 0.3s ease;
+        }
+
+        /* Efek saat input diklik (Focus) */
+        .form-control:focus { 
+            background-color: #1e2229;
+            border-color: #29ca8e; 
+            color: #ffffff;
+            box-shadow: 0 0 0 0.2rem rgba(41, 202, 142, 0.25); 
+        }
+
+        /* Warna teks bayangan (placeholder) */
+        .form-control::placeholder {
+            color: #5c6370;
+        }
+
+        /* Warna untuk opsi Dropdown Jurusan */
+        select.form-control option {
+            background-color: #1e2229;
+            color: #ffffff;
+        }
+
+        /* Tombol Daftar Modern dengan Gradasi */
+        .btn-register {
+            background: linear-gradient(135deg, #29ca8e 0%, #028a55 100%);
+            color: white; 
+            font-weight: 800; 
+            border-radius: 8px; 
+            padding: 14px 30px; 
+            transition: all 0.3s;
+            border: none;
+            width: 100%;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Efek Tombol saat di-Hover */
+        .btn-register:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(41, 202, 142, 0.4);
+            color: white; 
+        }
+
+        /* Garis Pemisah (HR) */
+        hr.divider {
+            border-top: 1px solid #2d333b;
+            margin: 25px 0;
+        }
+
+        /* Teks abu-abu untuk deskripsi */
+        .text-muted-custom {
+            color: #8892a3;
+            font-size: 14px;
+        }
+     </style>
+</head>
+<body>
+
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+               <div class="navbar-header">
+                    <a href="{% url 'beranda' %}" class="navbar-brand" style="display: flex; align-items: center; padding-top: 10px;">
+                        <span style="color:white; font-weight:bold; font-size: 24px; margin-left: 10px;">RIVALITAS <span style="color:#29ca8e; font-size:12px;">E-SPORTS</span></span>
+                    </a>
+               </div>
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="{% url 'beranda' %}" class="smoothScroll">Kembali ke Beranda</a></li>
+                    </ul>
+               </div>
+          </div>
+     </section>
+
+     <section>
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-offset-3 col-md-6 col-sm-12">
+                         <div class="form-container">
+                              <div class="section-title text-center mb-4">
+                                   <!-- Hapus color: #29ca8e dari h2, biarkan inherit, atau ganti style-nya -->
+                                   <h2 style="color: #ffffff; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px;">PENDAFTARAN TIM</h2>
+                                   <p class="text-muted-custom">Isi form di bawah ini untuk mendaftarkan tim kamu ke turnamen.</p>
+                              </div>
+
+                              {% if messages %}
+                                   {% for message in messages %}
+                                        <div class="alert alert-danger">{{ message }}</div>
+                                   {% endfor %}
+                              {% endif %}
+
+                            <form action="{% url 'daftar_tim' %}" method="POST">
+                                   {% csrf_token %}
+                                   
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                                  <label>Nama Kapten</label>
+                                                  <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" required>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                                  <label>NIM Kapten</label>
+                                                  <input type="text" name="nim" class="form-control" placeholder="Nomor Induk Mahasiswa" required>
+                                             </div>
+                                        </div>
+                                   </div>
+
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                                  <label>Email Aktif</label>
+                                                  <input type="email" name="email" class="form-control" placeholder="email@contoh.com" required>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                                  <label>Nomor Handphone (WA)</label>
+                                                  <input type="text" name="handphone" class="form-control" placeholder="0812xxxxxx" required>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   
+                                   <hr class="divider">
+
+                                   <div class="form-group">
+                                        <label>Nama Tim E-Sports</label>
+                                        <input type="text" name="tim" class="form-control" placeholder="Contoh: RRQ" required>
+                                   </div>
+                                   
+                                   <div class="form-group">
+                                        <label>Jurusan Asal</label>
+                                        <select name="jurusan" class="form-control" required>
+                                             <option value="" disabled selected>-- Pilih Jurusan --</option>
+                                             
+                                             {% for jur in daftar_jurusan %}
+                                                  <option value="{{ jur.no }}">{{ jur.nama }}</option>
+                                             {% endfor %}
+                                             
+                                        </select>
+                                   </div>
+
+                                   <button type="submit" class="btn btn-register">
+                                       <i class="fa fa-paper-plane" style="margin-right: 8px;"></i> Daftarkan Tim & Kapten
+                                   </button>
+                              </form>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <footer id="footer" style="padding-top: 40px; padding-bottom: 40px; background-color: #222; color: #fff; text-align:center;">
+          <div class="container">
+               <p style="margin:0;">Copyright &copy; 2026 Rivalitas E-Sports</p>
+          </div>
+     </footer>
+
+</body>
+</html>

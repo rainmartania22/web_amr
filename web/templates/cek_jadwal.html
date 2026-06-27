@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+     <title>Jadwal Tanding | Rivalitas E-Sports</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+     <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
+
+     <style>
+        body { 
+            background-color: #0d0f12; 
+            color: #ffffff;
+        }
+        .jadwal-container {
+            margin-top: 100px; 
+            margin-bottom: 60px;
+        }
+        /* Widget Statistik Atas */
+        .stat-box {
+            background: linear-gradient(135deg, #16181d 0%, #111317 100%);
+            border: 1px solid rgba(41, 202, 142, 0.1);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .stat-box h3 {
+            color: #29ca8e;
+            font-size: 28px;
+            font-weight: 800;
+            margin: 5px 0 0 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .stat-box p {
+            color: #8892a3;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        /* Style untuk Kartu Pertandingan (Match Card) */
+        .match-card {
+            background-color: #16181d;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(41, 202, 142, 0.12);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .match-card:hover {
+            box-shadow: 0 10px 25px rgba(41, 202, 142, 0.2);
+            border-color: #29ca8e;
+            transform: translateY(-5px);
+        }
+        /* Aksen garis neon di sebelah kiri kartu */
+        .match-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #29ca8e;
+        }
+        .match-time {
+            color: #29ca8e;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .team-row {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 15px;
+        }
+        .team-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .team-box.left {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        .team-box.right {
+            justify-content: flex-start;
+            text-align: left;
+        }
+        .team-name {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .team-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid #232733;
+            background: #11141a;
+            flex-shrink: 0;
+        }
+        .vs-badge-wrapper {
+            width: 50px;
+            text-align: center;
+        }
+        .vs-badge {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1e2229;
+            color: #29ca8e;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 900;
+            font-size: 13px;
+            font-style: italic;
+            border: 1px solid rgba(41, 202, 142, 0.3);
+            display: inline-block;
+        }
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            text-decoration: none !important;
+        }
+        .status-upcoming { 
+            background-color: #1c2221; 
+            color: #8892a3; 
+            border: 1px solid #2d333b;
+        }
+        .status-live { 
+            background-color: #d9534f; 
+            color: #ffffff; 
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(217, 83, 79, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
+        }
+     </style>
+</head>
+<body>
+
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+               <div class="navbar-header">
+                    <a href="{% url 'beranda' %}" class="navbar-brand" style="display: flex; align-items: center; padding-top: 10px;">
+                        <span style="color:white; font-weight:bold; font-size: 24px; margin-left: 10px;">RIVALITAS <span style="color:#29ca8e; font-size:12px;">E-SPORTS</span></span>
+                    </a>
+               </div>
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="{% url 'beranda' %}">Kembali ke Beranda</a></li>
+                    </ul>
+               </div>
+          </div>
+     </section>
+
+     <section class="jadwal-container">
+          <div class="container-fluid" style="padding: 0 40px;"> <!-- Membuat wadah melebar penuh kesamping -->
+               
+               <!-- JUDUL UTAMA -->
+               <div class="row">
+                    <div class="col-md-12 text-center" style="margin-bottom: 30px;">
+                         <h2 style="color: #ffffff; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">BRACKET & JADWAL MATCH</h2>
+                         <p style="color: #8892a3;">Pantau arena pertandingan dan jadilah saksi lahirnya juara baru.</p>
+                    </div>
+               </div>
+
+               <!-- ARSENAL WIDGETS ATAS (BIAR RAME & KEREN) -->
+               <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                         <div class="stat-box">
+                              <p><i class="fa fa-gamepad"></i> Total Match</p>
+                              <h3>{{ total_match }}</h3>
+                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                         <div class="stat-box">
+                              <p><i class="fa fa-users"></i> Tim Terdaftar</p>
+                              <h3>{{ total_tim }}</h3> <!-- Mengambil otomatis jumlah data dari database -->
+                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                         <div class="stat-box">
+                              <p><i class="fa fa-circle" style="color: #d9534f;"></i> Live Arena</p>
+                              <h3>1</h3>
+                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                         <div class="stat-box">
+                              <p><i class="fa fa-trophy" style="color: gold;"></i> Total Prize Pool</p>
+                              <h3>Rp 2.5M</h3>
+                         </div>
+                    </div>
+               </div>
+
+               <!-- STRUKTUR JADWAL DUA KOLOM -->
+               <div class="row">
+                    {% for match in jadwal_match %}
+                    <!-- col-md-6 memecah baris menjadi 2 kolom jejer kesamping di layar laptop/PC -->
+                    <div class="col-md-6 col-sm-12">
+                         <div class="match-card text-center">
+                              <!-- WAKTU MATCH -->
+                              <div class="match-time">
+                                  <i class="fa fa-calendar-check-o" style="margin-right: 5px;"></i> {{ match.waktu }}
+                              </div>
+                              
+                              <!-- DUEL TIM -->
+                              <div class="team-row">
+                                   <!-- TIM KIRI -->
+                                   <div class="team-box left">
+                                        <span class="team-name">{{ match.tim_kiri }}</span>
+                                        <img src="https://ui-avatars.com/api/?name={{ match.tim_kiri }}&background=232733&color=29ca8e&font-size=0.45&bold=true" class="team-logo" alt="Logo">
+                                   </div>
+
+                                   <!-- VS BADGE -->
+                                   <div class="vs-badge-wrapper">
+                                        <span class="vs-badge">VS</span>
+                                   </div>
+                                   
+                                   <!-- TIM KANAN -->
+                                   <div class="team-box right">
+                                        {% if match.tim_kanan == "TBD (Menunggu Lawan)" %}
+                                             <img src="https://ui-avatars.com/api/?name=TBD&background=1e2229&color=8892a3&font-size=0.45" class="team-logo" alt="Logo">
+                                             <span class="team-name" style="color: #8892a3; font-size: 15px; font-weight: 600;">{{ match.tim_kanan }}</span>
+                                        {% else %}
+                                             <img src="https://ui-avatars.com/api/?name={{ match.tim_kanan }}&background=232733&color=29ca8e&font-size=0.45&bold=true" class="team-logo" alt="Logo">
+                                             <span class="team-name">{{ match.tim_kanan }}</span>
+                                        {% endif %}
+                                   </div>
+                              </div>
+                              
+                              <!-- STATUS -->
+                              <div style="margin-top: 20px;">
+                                   {% if match.status == 'live' and match.tim_kanan != "TBD (Menunggu Lawan)" %}
+                                        <a href="#" class="status-badge status-live">
+                                             <i class="fa fa-circle" style="margin-right: 5px;"></i> 🔴 TONTON LIVE STREAM
+                                        </a>
+                                   {% else %}
+                                        <span class="status-badge status-upcoming">
+                                             <i class="fa fa-clock-o" style="margin-right: 5px;"></i> SEGERA MULAI
+                                        </span>
+                                   {% endif %}
+                              </div>
+                         </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-md-12 text-center" style="padding: 50px; background: #16181d; border-radius: 12px; border: 1px dashed #2d333b;">
+                         <i class="fa fa-calendar-times-o" style="font-size: 40px; color: #8892a3; margin-bottom: 15px;"></i>
+                         <h4 style="color: #8892a3;">Jadwal belum tersedia. Belum ada tim yang terdaftar di database.</h4>
+                    </div>
+                    {% endfor %}
+               </div>
+
+          </div>
+     </section>
+
+     <footer style="padding: 30px 0; background-color: #16181d; color: #8892a3; text-align:center; border-top: 1px solid #2d333b;">
+          <div class="container">
+               <p style="margin:0; font-size: 13px;">Copyright &copy; 2026 Rivalitas E-Sports</p>
+          </div>
+     </footer>
+
+</body>
+</html>

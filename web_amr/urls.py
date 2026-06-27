@@ -24,6 +24,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.beranda, name='beranda'), # <--- Path kosong '' berarti halaman utama (home)
     path('ajax/mahasiswa/', views.mahasiswa_json, name='mahasiswa_datatable'),
+    path('api/klasemen/', views.klasemen_datatable, name='klasemen_datatable'),
+    path('gabung-komunitas/', views.gabung_komunitas, name='gabung_komunitas'),
+    path('daftar-tim/', views.daftar_tim, name='daftar_tim'),
+    path('cek-jadwal/', views.cek_jadwal, name='cek_jadwal'),
+    path('register/', views.register_user, name='register'),
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

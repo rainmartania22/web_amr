@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login | Rivalitas E-Sports</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
+    <style>
+        body { background-color: #0d0f12; color: #a3a7b5; font-family: 'Open Sans', sans-serif; }
+        .auth-card { background: #161920; border: 1px solid #232733; border-radius: 10px; padding: 40px; margin-top: 100px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; background: #232733; color: white; border: 1px solid #333; border-radius: 5px; }
+        input:focus { outline: none; border-color: #29ca8e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4 col-sm-12">
+                <div class="auth-card">
+                    <h2 class="text-center" style="color: #29ca8e; font-weight: bold; margin-bottom: 30px;">LOGIN</h2>
+                    
+                    {% if form.errors %}
+                        <p style="color: #d9534f; text-align: center; font-size: 13px;">Username atau password salah. Silakan coba lagi.</p>
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <p><label>Username:</label><br> {{ form.username }}</p>
+                        <p><label>Password:</label><br> {{ form.password }}</p>
+                        <button type="submit" class="btn btn-success w-100" style="width: 100%; background-color: #29ca8e; border: none; padding: 10px; font-weight: bold; margin-top: 10px;">LOGIN</button>
+                    </form>
+                    <p class="text-center" style="margin-top: 20px;">Belum punya akun? <a href="{% url 'register' %}" style="color: #29ca8e;">Daftar di sini</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

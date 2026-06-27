@@ -2,154 +2,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-	<title>Soft Landing Page by Tooplate</title>
-	<!--
-
+     <title>Rivalitas | E-Sports & Gaming Community Portal</title>
+     <!--
     Template 2106 Soft Landing
-
-	http://www.tooplate.com/view/2106-soft-landing
-
+     http://www.tooplate.com/view/2106-soft-landing
     -->
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-     <meta name="description" content="">
-     <meta name="keywords" content="">
-     <meta name="team" content="">
+     <meta name="description" content="Portal komunitas game lokal dan info turnamen E-Sports.">
+     <meta name="keywords" content="esports, turnamen, game, klasemen, komunitas">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
      <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
      <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
      <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+     <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
      
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
-
 </head>
 <body>
 
      <!-- PRE LOADER -->
      <section class="preloader">
           <div class="spinner">
-
                <span class="spinner-rotate"></span>
-               
           </div>
      </section>
-
 
      <!-- MENU -->
      <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
           <div class="container">
-
                <div class="navbar-header">
                     <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                          <span class="icon icon-bar"></span>
                          <span class="icon icon-bar"></span>
                          <span class="icon icon-bar"></span>
                     </button>
-
                     <!-- lOGO TEXT HERE -->
-                    <a href="index.html" class="navbar-brand">Suara-Kami</a>
+                    <a href="#" class="navbar-brand" style="display: flex; align-items: center; padding-top: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 80" width="260" height="46">
+                         <defs>
+                              <!-- Efek Gradasi Warna E-Sports Menyala -->
+                              <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                   <stop offset="0%" style="stop-color:#29ca8e; stop-opacity:1" />
+                                   <stop offset="100%" style="stop-color:#028a55; stop-opacity:1" />
+                              </linearGradient>
+                              <!-- Efek Glow/Bayangan Menyala untuk Tema Gelap -->
+                              <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                   <feGaussianBlur stdDeviation="3" result="blur" />
+                                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                              </filter>
+                         </defs>
+                         
+                         <!-- Ikon Logo: Huruf R Modifikasi Sayap/Sabetan Pedang (Khas Gaming) -->
+                         <g filter="url(#neonGlow)">
+                              <path d="M15 15 H45 C60 15 65 25 65 35 C65 48 53 50 45 50 H30 V70 H15 V15 Z" fill="url(#cyberGrad)"/>
+                              <path d="M35 50 L58 70 H78 L52 48 Z" fill="url(#cyberGrad)"/>
+                              <!-- Aksen Sabetan Energi Segitiga di Belakang Huruf R -->
+                              <polygon points="10,45 5,70 25,60" fill="#ffffff"/>
+                         </g>
+                         
+                         <!-- Teks Utama: RIVALITAS -->
+                         <text x="90" y="46" fill="#ffffff" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="34" font-weight="900" letter-spacing="2">RIVALITAS</text>
+                         
+                         <!-- Teks Sekunder: E - S P O R T S -->
+                         <text x="92" y="66" fill="#29ca8e" font-family="'Open Sans', sans-serif" font-size="13" font-weight="800" letter-spacing="6.5">E-SPORTS</text>
+                    </svg>
+                    </a>
                </div>
 
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                          <li><a href="#home" class="smoothScroll">Home</a></li>
-                         <li><a href="#berita" class="smoothScroll">News</a></li>
-                         <li><a href="#developmentteam" class="smoothScroll">Team</a></li>
-                         <li><a href="#data-mahasiswa" class="smoothScroll">Student</a></li>
-                         <li><a href="#layanan" class="smoothScroll">Features</a></li>
+                         <li><a href="#berita" class="smoothScroll">News & Patch</a></li>
+                         <li><a href="#developmentteam" class="smoothScroll">Admins</a></li>
+                         <li><a href="#klasemen" class="smoothScroll">Leaderboard</a></li>
+                         <li><a href="#layanan" class="smoothScroll">Guide</a></li>
+                         <li><a href="#lokasi" class="smoothScroll">Basecamp</a></li>
                          <li><a href="#contact" class="smoothScroll">Contact</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                         <li><a href="#">Support Email - <span>info@rainmartaniamrosuli.com</span></a></li>
+                         {% if user.is_authenticated %}
+                         <li><a href="{% url 'logout' %}">Logout ({{ user.username }})</a></li>
+                         {% else %}
+                         <li><a href="{% url 'login' %}">Login / Register</a></li>
+                         {% endif %}
                     </ul>
                </div>
-
           </div>
      </section>
 
 
-     <!-- FEATURE -->
-     <section id="home" data-stellar-background-ratio="0.5">
+     <!-- HERO SECTION -->
+     <section id="home" data-stellar-background-ratio="1.5">
           <div class="overlay"></div>
           <div class="container">
                <div class="row">
-
                     <div class="col-md-offset-3 col-md-6 col-sm-12">
                          <div class="home-info">
-                              <h3>Platform Informasi & Integrasi Data</h3>
-                              <h1 style="font-family: 'Montserrat', 'Arial Black', sans-serif !important; font-weight: 800 !important; font-size: 30px !important; letter-spacing: 1px !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.4) !important;">Solusi Manajemen Data Operasional Kampus Berbasis Web</h1>
-                              <form action="" method="get" class="online-form">
-                                   <input type="email" name="email" class="form-control" placeholder="Enter your email" required="">
-                                   <button type="submit" class="form-control">Masukkan Email Pendaftaran</button>
-                              </form>
+                              <h3>Portal Turnamen E-Sports Lokal</h3>
+                              <h1 style="font-family: 'Montserrat', 'Arial Black', sans-serif !important; font-weight: 800 !important; font-size: 38px !important; letter-spacing: 1px !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;">Wadah Berkumpulnya Gamers, Info Turnamen & Klasemen Terkini</h1>
+                              
+                              <!-- Beri id="gaming-toast" agar bisa ditembak oleh script pencuci otomatis -->
+                              {% if messages %}
+                                   {% for message in messages %}
+                                        <div id="gaming-toast" class="alert alert-success text-center" style="max-width: 480px; margin: 0 auto 15px auto; padding: 8px 15px; border-radius: 6px; font-size: 13px; font-weight: 600; background-color: rgba(41, 202, 142, 0.12) !important; color: #29ca8e !important; border: 1px solid rgba(41, 202, 142, 0.4) !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                                             <i class="fa fa-check-circle"></i> {{ message }}
+                                        </div>
+                                   {% endfor %}
+                              {% endif %}
+                              
+                              <div class="online-form" style="background: transparent; padding: 0;">
+                              {% if user.is_authenticated %}
+                                   <h4 style="color: #29ca8e; margin-bottom: 20px;">Halo, {{ user.username }}! Siap bertanding?</h4>
+                                   <a href="#klasemen" class="smoothScroll" style="background-color: #29ca8e; color: white; padding: 12px 30px; font-size: 16px; border-radius: 5px; font-weight: bold; margin-right: 10px; display: inline-block;">Lihat Klasemen</a>
+                                   <a href="{% url 'logout' %}" style="background-color: #d9534f; color: white; padding: 12px 30px; font-size: 16px; border-radius: 5px; font-weight: bold; display: inline-block;">Logout</a>
+                              {% else %}
+                                   <a href="{% url 'register' %}" style="background-color: #29ca8e; color: white; padding: 12px 30px; font-size: 16px; border-radius: 5px; font-weight: bold; margin-right: 10px; display: inline-block;">Daftar Akun Baru</a>
+                                   <a href="{% url 'login' %}" style="border: 2px solid #29ca8e; color: #29ca8e; padding: 10px 30px; font-size: 16px; border-radius: 5px; font-weight: bold; display: inline-block; background: rgba(0,0,0,0.5);">Login</a>
+                              {% endif %}
+                              </div>
                          </div>
                     </div>
-
                </div>
           </div>
      </section>
 
-
-     <!-- BERITA -->
-     <section id="berita" data-stellar-background-ratio="0.5">
+     <section id="berita" data-stellar-background-ratio="0.5" style="padding: 80px 0; background-color: #0d0f12; clear: both;">
      <div class="container">
         <div class="row">
-
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 text-center" style="margin-bottom: 30px;">
                 <div class="section-title">
-                    <h1>Berita Terbaru</h1>
+                    <h1 style="color: #ffffff; font-weight: 800;">Berita & Update Game</h1>
                 </div>
             </div>
 
-            {% for berita in berita_list %}
-            <div class="col-md-4 col-sm-4">
-                <div class="berita-item" style="margin-bottom: 30px; padding: 15px; border: 1px solid #f0f0f0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
-                    {% if berita.gambar %}
-                        <img src="{{ berita.gambar.url }}" class="img-responsive" alt="{{ berita.judul }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px;">
-                    {% else %}
-                        <img src="{% static 'images/feature-mockup.png' %}" class="img-responsive" alt="Default Image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px;">
-                    {% endif %}
-                    
-                    <h3 style="margin-top: 0; font-size: 20px;">{{ berita.judul }}</h3>
-                    <p style="color: #999; font-size: 12px; margin-bottom: 10px;">{{ berita.tanggal_dibuat|date:"d M Y" }}</p>
-                    <p>{{ berita.konten|truncatewords:15 }}</p> 
-                    <a href="#" style="color: #29ca8e; font-weight: bold;">Baca selengkapnya...</a>
-                </div>
-            </div>
-            {% empty %}
-            <div class="col-md-12 text-center">
-                <p>Belum ada berita saat ini.</p>
-            </div>
-            {% endfor %}
+            <div class="col-md-12">
+                 <div id="slider-berita-navigasi" class="owl-carousel owl-theme">
+                      {% for berita in berita_list %}
+                      <div class="item" style="padding: 10px;">
+                           
+                           <div class="game-news-card-perfect">
+                                <div class="game-news-thumb-perfect">
+                                     {% if berita.gambar %}
+                                          <img src="{{ berita.gambar.url }}" alt="{{ berita.judul }}">
+                                     {% else %}
+                                          <img src="{% static 'images/feature-mockup.png' %}" alt="Default">
+                                     {% endif %}
+                                </div>
 
+                                <div class="game-news-body-perfect">
+                                     <span class="game-news-date-perfect">
+                                          <i class="fa fa-calendar"></i> {{ berita.tanggal_dibuat|date:"d M Y" }}
+                                     </span>
+                                     <h3 class="game-news-title-perfect" title="{{ berita.judul }}">
+                                          {{ berita.judul }}
+                                     </h3>
+                                     <p class="game-news-text-perfect">
+                                          {{ berita.isi|truncatewords:10 }}
+                                     </p>
+                                     <button type="button" class="btn btn-default" onclick="bukaModal('{{ berita.id }}')" style="background: transparent; color: white; border: 1px solid white; border-radius: 20px; padding: 8px 25px; transition: 0.3s; margin-top: 10px; font-weight: bold;">
+                                        Baca Berita
+                                   </button>
+                                </div>
+                           </div>
+
+                      </div>
+                      {% empty %}
+                      <div class="text-center">
+                           <p style="color: #8892a3;">Belum ada update berita turnamen saat ini.</p>
+                      </div>
+                      {% endfor %}
+                 </div>
+
+                 <div class="custom-nav-container text-center" style="margin-top: 25px;">
+                      <button class="btn-nav-panah btn-prev-berita" style="margin-right: 15px;"><i class="fa fa-chevron-left"></i></button>
+                      <button class="btn-nav-panah btn-next-berita"><i class="fa fa-chevron-right"></i></button>
+                 </div>
+            </div>
         </div>
      </div>
      </section>
 
-     <!-- DEVELOPMENT TEAM -->
      <section id="developmentteam" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
-
                     <div class="col-md-offset-3 col-md-6 col-sm-12">
                          <div class="section-title">
-                              <h1>Development Team</h1>
+                              <h1>Admin & Staff Turnamen</h1>
                          </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4">
                          <div class="team-thumb">
-                              <img src="{% static 'images/team-image1.jpg'  %}" class="img-responsive" alt="Andrew Orange">
+                              <img src="{% static 'images/RAIN.png'  %}" class="img-responsive" alt="Andrew Orange">
                               <div class="team-info team-thumb-up">
                                    <h2>Rain Martani Amarrosuli</h2>
-                                   <small>Project Manager</small>
-                                   <p>Bertanggung jawab atas manajemen proyek, perancangan arsitektur sistem, serta memastikan integrasi antara front-end dan back-end berjalan dengan optimal dan sesuai timeline.</p>
+                                   <small>Community & Event Manager</small>
+                                   <p>Bertanggung jawab mengatur jadwal turnamen, relasi antar komunitas, serta memastikan semua event berjalan sportif.</p>
                               </div>
                          </div>
                     </div>
@@ -158,86 +209,94 @@
                          <div class="team-thumb">
                               <div class="team-info team-thumb-down">
                                    <h2>Muhammad Arfan Adi Wicaksono</h2>
-                                   <small>Backend Developer</small>
-                                   <p>Bertanggung jawab dalam membangun logika server, merancang API yang efisien, serta memastikan alur autentikasi dan pemrosesan data di balik layar berjalan dengan aman dan lancar.</p>
+                                   <small>Technical Server Admin</small>
+                                   <p>Mengelola stabilitas server pendaftaran, keamanan data tim, dan memastikan website tidak down saat traffic tinggi.</p>
                               </div>
-                              <img src="{% static 'images/team-image2.jpg'  %}" class="img-responsive" alt="Catherine Soft">
+                              <img src="{% static 'images/FANN.png'  %}" class="img-responsive" alt="FANN">
                          </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4">
                          <div class="team-thumb">
-                              <img src="{% static 'images/team-image3.jpg' %}" class="img-responsive" alt="Jack Wilson">
+                              <img src="{% static 'images/FERICO.png' %}" class="img-responsive" alt="FERICO">
                               <div class="team-info team-thumb-up">
                                    <h2>Ferico Febriansyah</h2>
-                                   <small>Database Administrator</small>
-                                   <p>Fokus pada perancangan struktur basis data, optimasi kueri (query) SQL, serta memastikan konsistensi, keamanan, dan kecepatan akses data mahasiswa secara real-time.</p>
+                                   <small>Data & Bracket Operator</small>
+                                   <p>Fokus mengelola update poin klasemen, pembagian bagan bracket pertandingan, serta verifikasi hasil match secara real-time.</p>
                               </div>
                          </div>
                     </div>
-                    
+                    <div class="col-md-12 col-sm-12 text-center" style="margin-top: 40px; padding-bottom: 20px; clear: both;">
+                         <a href="/admin/" target="_blank" class="section-btn pricing-btn" style="padding: 12px 40px; font-size: 16px; letter-spacing: 1px;">
+                              <i class="fa fa-lock" style="margin-right: 8px;"></i> Login Admin Panel
+                         </a>
+                    </div>
                </div>
           </div>
+          
      </section>
 
-     <!-- DATA MAHASISWA -->
-     <section id="data-mahasiswa" data-stellar-background-ratio="0.5" style="background: #f9f9f9; padding: 80px 0;">
+     <!-- TABEL KLASEMEN (DataTables) -->
+     <section id="klasemen" data-stellar-background-ratio="0.5" style="background: #f9f9f9; padding: 80px 0;">
      <div class="container">
           <div class="row">
                <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                         <h1 style="color: #29ca8e; text-transform: uppercase; font-weight: bold;">Daftar Mahasiswa Terdaftar</h1>
-                         <p>Data diambil secara real-time langsung dari server backend database</p>
+                         <h1 style="color: #29ca8e; text-transform: uppercase; font-weight: bold;">Klasemen Liga Terkini</h1>
+                         <p>Update poin otomatis dari server database pasca pertandingan</p>
                     </div>
                     
                     <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);">
                          <div class="table-responsive">
-                              <table id="datatable-mahasiswa" class="table table-striped table-bordered" style="width:100%">
+                              <table id="datatable-klasemen" class="table table-striped table-bordered" style="width:100%">
                                    <thead>
                                         <tr style="background-color: #29ca8e; color: white;">
-                                             <th>NO</th>
-                                             <th>NIM</th>
-                                             <th>NAMA</th>
-                                             <th>EMAIL</th>
-                                             <th>JURUSAN</th>
+                                             <th class="text-center">RANK</th>
+                                             <th class="text-center">ID</th>          <!-- KOLOM BARU -->
+                                             <th class="text-center">NAMA TIM</th>
+                                             <th class="text-center">NAMA KAPTEN</th>
+                                             <th class="text-center">JURUSAN</th>     <!-- KOLOM BARU -->
+                                             <th class="text-center">MATCH PLAYED</th>
+                                             <th class="text-center">WIN</th>
+                                             <th class="text-center">TOTAL POIN</th>
                                         </tr>
                                    </thead>
+                                   <tbody>
+                                        <!-- Data dari JSON akan masuk ke sini otomatis -->
+                                   </tbody>
                               </table>
                          </div>
                     </div>
-
                </div>
           </div>
      </div>
      </section>
 
-     <!-- TESTIMONIAL -->
-     <section id="testimonial" data-stellar-background-ratio="0.5">
+     <!-- TESTIMONIAL (Gamer Review) -->
+     <section id="testimonial" data-stellar-background-ratio="1">
           <div class="container">
                <div class="row">
-
                     <div class="col-md-6 col-sm-12">
-                         <div class="testimonial-image"></div>
+                         <img src="{% static 'images/gamersay.png' %}" class="img-responsive" style="width: 100%; height: 65vh; object-fit: cover;">
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                          <div class="testimonial-info">
-                              
                               <div class="section-title">
-                                   <h1>Testimonials</h1>
+                                   <h1>Apa Kata Gamers?</h1>
                               </div>
 
                               <div class="owl-carousel owl-theme">
                                    <div class="item">
-                                        <h3>Sistemnya responsif banget! Sekarang lihat data terdaftar dan informasi akademik jadi jauh lebih cepat karena tampilannya simpel dan datanya langsung ke-update secara real-time.</h3>
+                                        <h3>Sistem klasemennya cepet banget update! Selesai tanding, poin tim kita langsung naik di web. UX-nya juara.</h3>
                                         <div class="testimonial-item">
                                              <img src="{% static 'images/tst-image1.jpg' %}" class="img-responsive" alt="Michael">
-                                             <h4>Mirza Nayawa</h4>
+                                             <h4>Herman</h4>
                                         </div>
                                    </div>
 
                                    <div class="item">
-                                        <h3>Sangat membantu operasional kampus. Integrasi database-nya rapi, nyari data mahasiswa lewat fitur search DataTables-nya instan, gak perlu bongkar-bongkar file manual lagi.</h3>
+                                        <h3>Sangat membantu nyari info turnamen lokal. Gak perlu scroll grup sosmed yang ketumpuk, semua info match ada di sini.</h3>
                                         <div class="testimonial-item">
                                              <img src="{% static 'images/tst-image2.jpg' %}" class="img-responsive" alt="Sofia">
                                              <h4>Tulus</h4>
@@ -245,144 +304,145 @@
                                    </div>
 
                                    <div class="item">
-                                        <h3>Aplikasi manajemen data yang sangat interaktif. Tampilannya bersih, ramah di HP, dan alur autentikasinya jelas, bikin pengguna baru langsung paham cara pakainya.</h3>
+                                        <h3>Daftar tim buat turnamen gampang banget, webnya juga ringan dibuka pake HP sambil nunggu mabar.</h3>
                                         <div class="testimonial-item">
                                              <img src="{% static 'images/tst-image3.jpg' %}" class="img-responsive" alt="Monica">
-                                             <h4>Amarr</h4>
+                                             <h4>Nadia</h4>
                                         </div>
                                    </div>
                               </div>
-
                          </div>
                     </div>
-                    
                </div>
           </div>
      </section>
 
-
-     <!-- LAYANAN -->
+     <!-- LAYANAN / GUIDE -->
      <section id="layanan" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
-
                     <div class="col-md-12 col-sm-12">
                          <div class="section-title">
-                              <h1>Layanan Sistem Informasi</h1>
+                              <h1>Panduan Mengikuti Turnamen</h1>
                          </div>
                     </div>
 
                     <div class="col-md-4 col-sm-6">
                          <div class="pricing-thumb">
                              <div class="pricing-title">
-                                  <h2>Registrasi Akun</h2>
+                                  <h2>1. Registrasi Tim</h2>
                              </div>
                              <div class="pricing-info">
-                                   <p>Buat akun baru menggunakan email aktif</p>
-                                   <p>Gunakan password yang aman</p>
-                                   <p>Verifikasi email kampus</p>
+                                   <p>Buat akun kapten tim</p>
+                                   <p>Isi nama tim & logo</p>
+                                   <p>Daftarkan roster pemain (Nick in-game)</p>
                              </div>
                              <div class="pricing-bottom">
-                                   <a href="#" class="section-btn pricing-btn">Daftar Akun</a>
+                                   <a href="{% url 'daftar_tim' %}" class="section-btn pricing-btn">Daftar Tim</a>
                              </div>
                          </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
+                    </div> <div class="col-md-4 col-sm-6">
                          <div class="pricing-thumb">
                              <div class="pricing-title">
-                                  <h2>Lengkapi Biodata</h2>
+                                  <h2>2. Cek Bracket Match</h2>
                              </div>
                              <div class="pricing-info">
-                                   <p>Isi NIM, Nama Lengkap, dan Jurusan</p>
-                                   <p>Unggah foto profil terbaru</p>
-                                   <p>Cek kembali validitas data server</p>
+                                   <p>Pantau jadwal tanding harian</p>
+                                   <p>Cek calon lawan tim kalian</p>
+                                   <p>Standby di lobby 15 menit sebelum mulai</p>
                              </div>
                              <div class="pricing-bottom">
-                                   <a href="#" class="section-btn pricing-btn">Isi Data</a>
+                                   <a href="{% url 'cek_jadwal' %}" class="section-btn pricing-btn">Cek Jadwal</a>
                              </div>
                          </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
+                    </div> <div class="col-md-4 col-sm-6">
                          <div class="pricing-thumb">
                              <div class="pricing-title">
-                                  <h2>Validasi & Selesai</h2>
+                                  <h2>3. Bertanding & Naik Rank</h2>
                              </div>
                              <div class="pricing-info">
-                                   <p>Data masuk ke database backend secara real-time</p>
-                                   <p>Nama otomatis muncul di Daftar Mahasiswa</p>
-                                   <p>Akses penuh ke fitur portal berita</p>
+                                   <p>Submit screenshot hasil match</p>
+                                   <p>Verifikasi oleh admin turnamen</p>
+                                   <p>Poin klasemen bertambah otomatis</p>
                              </div>
                              <div class="pricing-bottom">
-                                   <a href="#" class="section-btn pricing-btn">Lihat Hasil</a>
+                                   <a href="#klasemen" class="smoothScroll section-btn pricing-btn">Lihat Klasemen</a>
                              </div>
+                         </div>
+                    </div> </div> </div> </section>
+                    <!-- LOKASI -->
+          <section id="lokasi" style="padding: 80px 0; background-color: #0d0f12;">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title text-center" style="margin-bottom: 40px;">
+                              <h2 style="color: #ffffff; font-weight: 800; letter-spacing: 1px;">BASECAMP RIVALITAS</h2>
+                              <p style="color: #8892a3;">Kunjungi arena offline kami untuk verifikasi pendaftaran atau turnamen LAN.</p>
                          </div>
                     </div>
                     
+                    <div class="col-md-offset-1 col-md-10 col-sm-12">
+                         <div style="overflow: hidden; padding-bottom: 45%; position: relative; height: 0; border-radius: 12px; border: 1px solid rgba(41, 202, 142, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                              
+                              <iframe src="https://maps.google.com/maps?q=STTR%20Cepu&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                              width="100%" height="100%" 
+                              style="border:0; position: absolute; top:0; left:0; filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(100%);" 
+                              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                              
+                         </div>
+                    </div>
                </div>
           </div>
-     </section>   
-
+     </section>
 
      <!-- CONTACT -->
      <section id="contact" data-stellar-background-ratio="0.5">
      <div class="container">
           <div class="row">
-
                <div class="col-md-offset-1 col-md-10 col-sm-12">
                     <form id="contact-form" role="form" action="" method="post">
-                         
                          {% csrf_token %}
-
                          <div class="section-title">
-                              <h1>Kirim Pesan ke Admin</h1>
+                              <h1>Hubungi Admin Turnamen</h1>
                          </div>
 
                          <div class="col-md-4 col-sm-4">
-                              <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" required="">
+                              <input type="text" class="form-control" placeholder="Nama / Nickname" name="name" required="">
                          </div>
                          <div class="col-md-4 col-sm-4">
-                              <input type="email" class="form-control" placeholder="Alamat Email" name="email" required="">
+                              <input type="email" class="form-control" placeholder="Email Aktif" name="email" required="">
                          </div>
                          <div class="col-md-4 col-sm-4">
                               <input type="submit" class="form-control" name="Kirim Pesan" value="Kirim Pesan">
                          </div>
                          <div class="col-md-12 col-sm-12">
-                              <textarea class="form-control" rows="8" placeholder="Tulis pertanyaan, keluhan, atau saran anda di sini." name="message" required=""></textarea>
+                              <textarea class="form-control" rows="8" placeholder="Ada kendala saat mendaftar atau ingin melaporkan hasil match? Tulis di sini." name="message" required=""></textarea>
                          </div>
                     </form>
                </div>
-
           </div>
      </div>
 </section>
-
 
      <!-- FOOTER -->
      <footer id="footer" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
-
                     <div class="copyright-text col-md-12 col-sm-12">
                          <div class="col-md-6 col-sm-6">
-                              <p>Copyright &copy; 2018 Company Name - Design:
-                				<a rel="nofollow" href="http://tooplate.com">Tooplate</a></p>
+                              <p>Copyright &copy; 2026 Rivalitas E-Sports - Design:
+                                   <a rel="nofollow" href="http://tooplate.com">Tooplate</a></p>
                          </div>
-
                          <div class="col-md-6 col-sm-6">
                               <ul class="social-icon">
-                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                   <li><a href="#" class="fa fa-twitter"></a></li>
-                                   <li><a href="#" class="fa fa-instagram"></a></li>
+                                   <li><a href="https://wa.me/6283865177778?." class="fa fa-whatsapp"></a></li>
+                                   <li><a href="https://www.instagram.com/ammarrrrrrr24_/." class="fa fa-instagram"></a></li>
                               </ul>
                          </div>
                     </div>
-
                </div>
           </div>
      </footer>
-
 
      <!-- SCRIPTS -->
      <script src="{% static 'js/jquery.js' %}"></script>
@@ -396,6 +456,7 @@
      <script src="{% static 'js/smoothscroll.js' %}"></script>
      <script src="{% static 'js/custom.js' %}"></script>
 
+     <!-- SMOOTH SCROLL OVERRIDE -->
      <script>
      $(document).ready(function(){
           $('.smoothScroll').click(function(e){
@@ -412,20 +473,86 @@
 
      <script>
      $(document).ready(function() {
-          $('#datatable-mahasiswa').DataTable({
-               "ajax": "{% url 'mahasiswa_datatable' %}",
-               "columns": [
-                    { "data": "no" },
-                    { "data": "nim" },
-                    { "data": "nama" },
-                    { "data": "email" },
-                    { "data": "id_jur" }
-               ]
-          });
+     // Obat anti-error: hancurkan sisa tabel lama jika ada, lalu buat ulang yang baru
+     $('#datatable-klasemen').DataTable({
+          "destroy": true,  // <--- INI KUNCI PENYEMBUHNYA BROTHER!
+          "ajax": "{% url 'klasemen_datatable' %}", 
+          "columns": [
+               { "data": "rank", "className": "text-center" },
+               { "data": "nim", "className": "text-center" },
+               { "data": "nama_tim", "className": "text-center" },
+               { "data": "nama_kapten", "className": "text-center" },
+               { "data": "jurusan", "className": "text-center" },
+               { "data": "match_played", "className": "text-center" },
+               { "data": "win", "className": "text-center" },
+               { "data": "total_poin", "className": "text-center" }
+          ],
+          "order": [[ 6, "desc" ]] // Mengurutkan dari Total Poin (kolom index ke-6) terbesar
+     });
+
+     // 2. TIMEOUT NOTIFIKASI: Muncul sebentar (4 detik) lalu meluncur hilang
+     if ($('#gaming-toast').length > 0) {
+          setTimeout(function() {
+               $('#gaming-toast').slideUp(500, function() {
+                    $(this).remove();
+               });
+          }, 4000); 
+     }
      });
      </script>
+     <script>
+     $(document).ready(function() {
+          // 1. DATATABLE KLASEMEN (Biarkan ini seperti aslinya)
+          $('#datatable-klasemen').DataTable({
+               "destroy": true,
+               "ajax": "{% url 'klasemen_datatable' %}", 
+               "columns": [
+                    { "data": "rank", "className": "text-center" },
+                    { "data": "nim", "className": "text-center" },
+                    { "data": "nama_tim", "className": "text-center" },
+                    { "data": "nama_kapten", "className": "text-center" },
+                    { "data": "jurusan", "className": "text-center" },
+                    { "data": "match_played", "className": "text-center" },
+                    { "data": "win", "className": "text-center" },
+                    { "data": "total_poin", "className": "text-center" }
+               ],
+               "order": [[ 6, "desc" ]]
+          });
 
-</body>
-</html>
+          // 🚀 2. AKTIVASI SLIDER BERITA (INI YANG MENGUNCI JADI 3 KOTAK & BISA DIGESER)
+          var owlBerita = $('#slider-berita-navigasi');
+          owlBerita.owlCarousel({
+              loop: true,
+              margin: 15,
+              nav: false, // Kita pakai tombol panah kustom antum
+              dots: true,
+              autoplay: true,
+              autoplayTimeout: 4000,
+              autoplayHoverPause: true,
+              responsive: {
+                  0: { items: 1 },    // Tampilan HP: 1 berita
+                  768: { items: 2 },  // Tablet: 2 berita
+                  1000: { items: 3 }  // Laptop/PC: Kunci di 3 berita saja!
+              }
+          });
+
+          // 🚀 3. LOGIKA TOMBOL PANAH BIAR BISA DIKLIK GESER KIRI-KANAN
+          $('.btn-next-berita').click(function() {
+              owlBerita.trigger('next.owl.carousel');
+          });
+          $('.btn-prev-berita').click(function() {
+              owlBerita.trigger('prev.owl.carousel');
+          });
+
+          // 4. TIMEOUT NOTIFIKASI
+          if ($('#gaming-toast').length > 0) {
+               setTimeout(function() {
+                    $('#gaming-toast').slideUp(500, function() {
+                         $(this).remove();
+                    });
+               }, 4000); 
+          }
+     });
+     </script>
 </body>
 </html>

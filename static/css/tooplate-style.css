@@ -311,7 +311,7 @@ http://www.tooplate.com/view/2106-soft-landing
   -----------------------------------------*/
 
   #home {
-    background: url('../images/home-bg.jpg') no-repeat center center;
+    background: url('../images/gaymers.jfif') no-repeat center center fixed;
     background-size: cover;
     vertical-align: middle;
     display: -webkit-box;
@@ -844,4 +844,299 @@ http://www.tooplate.com/view/2106-soft-landing
     .custom-navbar .navbar-brand {
         margin-left: -10px !important;
     }
+}
+/* ==========================================================================
+   FIX TOTAL NAVBAR: MEMAKSA TEKS JADI HITAM TEBAL DAN GAGAH
+   ========================================================================== */
+@media (min-width: 768px) {
+    /* Menembak kondisi navbar saat posisi diam maupun saat di-scroll down */
+    .custom-navbar .nav li a, 
+    .custom-navbar.top-nav-collapse .nav li a {
+        font-family: 'Open Sans', 'Arial', sans-serif !important;
+        font-size: 15px !important;       /* Ukuran pas dan nyaman di mata */
+        font-weight: 700 !important;       /* Bikin teks tebal / BOLD maksimal */
+        color: #0f0101 !important;         /* Hitam pekat, anti abu-abu pudar! */
+        padding-right: 12px !important;    /* Atur kerapatan sela menu */
+        padding-left: 12px !important;     
+    }
+
+    /* Efek hover warna hijau khas e-sports saat menu didekati mouse */
+    .custom-navbar .nav li a:hover,
+    .custom-navbar.top-nav-collapse .nav li a:hover {
+        color: #29ca8e !important;
+    }
+}
+/* ==========================================================================
+   FIX TOTAL COMBINED: FULL DARK MODE + FIX TOMBOL HERO CAPSULE
+   ========================================================================== */
+
+/* 1. Latar Belakang Global Tema Gelap */
+body, section, #contact, footer {
+    background-color: #0f1115 !important; /* Hitam kebiruan pekat khas gaming */
+    color: #e1e1e6 !important;
+}
+
+/* 2. Warna Gelap Sekunder untuk Variasi Section */
+#klasemen, #layanan, #development-team {
+    background-color: #161920 !important;
+}
+
+/* 3. Semua Judul Menjadi Putih Tegas */
+h1, h2, h3, h4, h5, h6, .section-title h1 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+p, small {
+    color: #a3a7b5 !important;
+}
+
+/* 4. Navbar Gelap & Teks Menu Putih Tebal Sejajar */
+@media (min-width: 768px) {
+    .custom-navbar .nav li a, 
+    .custom-navbar.top-nav-collapse .nav li a {
+        font-family: 'Open Sans', 'Arial', sans-serif !important;
+        font-size: 15px !important;       
+        font-weight: 700 !important;       
+        color: #ffffff !important;         /* Teks menu jadi putih cerah */
+        padding-right: 9px !important;    
+        padding-left: 9px !important;     
+    }
+    .custom-navbar .nav li a:hover,
+    .custom-navbar.top-nav-collapse .nav li a:hover {
+        color: #29ca8e !important;
+    }
+    .custom-navbar.top-nav-collapse {
+        background-color: #0f1115 !important; 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+    .custom-navbar .container {
+        width: 95% !important;
+        max-width: 100% !important;
+    }
+    .custom-navbar .navbar-brand {
+        margin-left: -10px !important;
+        font-weight: 700 !important;
+    }
+
+    /* 5. PERBAIKAN TOMBOL GABUNG KOMUNITAS (ANTI PENYOK) */
+    .online-form {
+        display: block !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+    }
+    .online-form input[type="email"] {
+        width: 65% !important;
+        display: inline-block !important;
+        border-radius: 50px 0 0 50px !important; /* Sisi kiri melengkung kapsul */
+        background-color: #161920 !important;
+        color: #ffffff !important;
+        border: 1px solid #232733 !important;
+    }
+    .online-form button {
+        position: relative !important;     /* Membebaskan dari jebakan absolute */
+        right: inherit !important;
+        top: 0 !important;
+        width: auto !important;            /* Lebar otomatis mengikuti panjang teks */
+        height: 50px !important;
+        display: inline-block !important;
+        padding: 0 25px !important;        /* Jarak sela di dalam tombol */
+        vertical-align: top !important;
+        margin-left: -5px !important;      /* Menempelkan tombol dengan input email */
+        border-radius: 0 50px 50px 0 !important; /* Sisi kanan melengkung kapsul */
+        background-color: #29ca8e !important;
+        color: #ffffff !important;
+        font-weight: bold !important;
+    }
+    .online-form button:hover {
+        background-color: #ffffff !important;
+        color: #0f1115 !important;
+    }
+}
+
+/* 6. Desain Kartu & Form Kontak di Area Bawah */
+.berita-item, .pricing-thumb, .team-thumb, .testimonial-info {
+    background-color: #161920 !important;
+    border: 1px solid #232733 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+}
+#contact-form .form-control {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border-bottom: 3px solid #232733 !important;
+}
+#contact-form .form-control:focus {
+    border-bottom-color: #29ca8e !important;
+}
+/* ==========================================================================
+   FIX TOTAL DATA TABLES: FULL DARK INTERFACE & ULTRA CONTRAST TEXT
+   ========================================================================== */
+
+/* 1. Paksa box kontainer luar tabel jadi abu-gelap solid */
+#klasemen div[style*="background: white"] {
+    background-color: #161920 !important; 
+    border: 1px solid #232733 !important;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.5) !important;
+}
+
+/* 2. Teks pelengkap DataTables (Search, Show Entries, Paging) jadi Putih */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    color: #ffffff !important; 
+    margin-bottom: 10px;
+}
+
+/* Mengubah warna teks di dalam search box */
+.dataTables_wrapper .dataTables_filter input {
+    background-color: #0f1115 !important;
+    color: #ffffff !important;
+    border: 1px solid #232733 !important;
+    border-radius: 4px;
+    padding: 5px;
+}
+.dataTables_wrapper .dataTables_length select {
+    background-color: #0f1115 !important;
+    color: #ffffff !important;
+    border: 1px solid #232733 !important;
+}
+
+/* 3. Baris isi tabel (Row) menjadi gelap pekat anti-putih */
+#datatable-klasemen {
+    border-color: #232733 !important;
+}
+#datatable-klasemen tbody tr {
+    background-color: #0f1115 !important; 
+}
+#datatable-klasemen tbody tr:nth-of-type(odd) {
+    background-color: #13161c !important; 
+}
+
+/* 4. Amankan Semua Teks di dalam Baris Tabel Agar Putih Jelas */
+#datatable-klasemen tbody tr td {
+    color: #ffffff !important;             
+    font-weight: 600 !important;           
+    border-color: #232733 !important;      
+    padding: 12px 8px !important;          
+}
+
+/* Efek sorot baris saat didekati mouse */
+#datatable-klasemen tbody tr:hover {
+    background-color: #1c2029 !important;
+}
+/* ==========================================================================
+   ANIMASI NEON PULSE UNTUK TOMBOL KIRIM PESAN GAHAR
+   ========================================================================== */
+
+/* 1. Daftarkan Alur Gerakan Detak/Pulse Cahaya Neon */
+@keyframes neon-pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(41, 202, 142, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(41, 202, 142, 0.8), 0 0 15px rgba(41, 202, 142, 0.6);
+        transform: scale(1.02); /* Tombol agak sedikit membesar halus saat memancarkan cahaya */
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(41, 202, 142, 0.4);
+    }
+}
+
+/* 2. Modifikasi Tombol dengan Kombinasi Class Baru */
+#contact-form input[type='submit'] {
+    background: #29ca8e !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    border: none !important;
+    height: 50px !important;
+    box-shadow: 0 4px 15px rgba(41, 202, 142, 0.4) !important;
+    transition: all 0.3s ease-in-out !important; /* Biar transisi membesarnya mulus */
+}
+
+/* 3. Eksekusi Animasi Saat Mouse Menyorot Tombol (:hover) */
+#contact-form input[type='submit']:hover {
+    background: #29ca8e !important; /* Tetap hijau neon agar fokus ke animasinya */
+    color: #ffffff !important;
+    /* Memanggil animasi neon-pulse, durasi 1.5 detik, berputar terus-menerus (infinite) */
+    animation: neon-pulse 1.5s infinite ease-in-out; 
+    cursor: pointer;
+}
+/* ==========================================================================
+   FIX TOMBOL PANDUAN: ANTI TRANSPARAN & GLOWING NEON
+   ========================================================================== */
+
+/* 1. Paksa warna dasar tombol panduan (pricing-btn) agar solid hijau neon */
+.pricing-thumb .pricing-btn,
+#layanan .pricing-btn,
+.section-btn.pricing-btn {
+    position: relative !important; /* Lepas dari jebakan absolute biar posisinya presisi */
+    display: inline-block !important;
+    background: #29ca8e !important;  /* Hijau neon solid */
+    color: #ffffff !important;       /* Teks putih super jelas */
+    font-weight: 700 !important;     /* Tebalkan font */
+    font-size: 14px !important;
+    padding: 10px 24px !important;
+    border-radius: 50px !important;  /* Kapsul sempurna */
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(41, 202, 142, 0.3) !important; /* Efek glow tipis */
+    text-align: center !important;
+    margin-top: 15px !important;
+    clear: both !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+/* 2. Efek Animasi Pulse saat Tombol Disorot Mouse (:hover) */
+.pricing-thumb .pricing-btn:hover,
+#layanan .pricing-btn:hover,
+.section-btn.pricing-btn:hover {
+    background: #29ca8e !important;  /* Tetap hijau */
+    color: #ffffff !important;       /* Tetap putih */
+    animation: neon-pulse 1.5s infinite ease-in-out !important; /* Ikut berdetak gahar! */
+    box-shadow: 0 4px 25px rgba(41, 202, 142, 0.7) !important;
+    cursor: pointer !important;
+}
+
+/* 3. Pastikan area container pembungkus tombol (pricing-bottom) tidak merusak layout */
+.pricing-bottom {
+    display: block !important;
+    text-align: center !important;
+    padding-top: 10px !important;
+}
+/* --- REVISI: MEMBESARKAN TINGGI GAMBAR (AGAR TIDAK PIPPIH) --- */
+.game-news-thumb-perfect {
+    width: 100% !important;
+    /* Kita naikkan tingginya dari 180px menjadi 250px supaya lebih proporsional */
+    height: 500px !important; 
+    background: #11141a !important;
+    overflow: hidden !important;
+    display: block !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+.game-news-thumb-perfect img {
+    width: 100% !important;
+    /* Samakan tingginya dengan wadah (250px) */
+    height: 500px !important; 
+    object-fit: cover !important; 
+    display: block !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+/* Karena gambar jadi lebih tinggi, kita perlu menambah tinggi kartu totalnya juga agar tidak terpotong */
+.game-news-card-perfect {
+    background: #161920 !important;
+    border-radius: 8px !important;
+    border: 1px solid #232733 !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    /* Tinggi kartu kita naikkan agar teks tetap punya ruang */
+    height: 480px !important; 
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
 }
